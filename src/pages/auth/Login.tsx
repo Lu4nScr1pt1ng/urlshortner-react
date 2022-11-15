@@ -1,6 +1,6 @@
 import React, { FormEvent, useState } from "react"
-import { redirect, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 
 export default function Login(){
@@ -21,6 +21,8 @@ export default function Login(){
             navigate("/dashboard");
         } catch(err) {
             setIsLoading(false);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             if(err?.response.status === 404){
                 setMessage("Usuario ou senha incorreto!");
                 return;
