@@ -5,7 +5,7 @@ import world from '../assets/world.svg';
 
 export default function Home() {
   return (
-    <div className="container mx-auto h-[80vh]">
+    <div className="container mx-auto">
       <div className="flex flex-col md:flex-row lg:h-[80%] w-[100%] pt-[80px] items-center gap-4 md:gap-0">
         <div className="md:w-[60%]  order-2 md:order-1">
           <div className='text-center md:text-start'>

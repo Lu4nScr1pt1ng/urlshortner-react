@@ -6,9 +6,9 @@ export default function Dashboard(){
 
 
     return(
-        <div>
+        <div className="pt-[80px] container mx-auto">
+
             <p>Dashboard - private route</p>
-            <p>{ token }</p>
         </div>
     )
 }
