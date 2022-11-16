@@ -21,7 +21,7 @@ function Header() {
 
   return (
     <header
-      className={`${bg ? 'bg-white shadow-lg' : ''} fixed left-0 right-0 z-50 transition-all duration-200 `}
+      className={`${bg ? 'bg-white shadow-lg' : ''} fixed left-0 right-0 z-40 transition-all duration-200 `}
     >
       <div className="container mx-auto flex justify-between h-[70px] items-center">
         <div className="text-[18px] font-semibold">URL SHORTNER</div>
