@@ -28,7 +28,7 @@ export default function Login() {
       setIsLoading(false);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      if (err?.response.status === 404) {
+      if (err.response && err?.response.status === 404) {
         setMessage('Usuario ou senha incorreto!');
         return;
       }
