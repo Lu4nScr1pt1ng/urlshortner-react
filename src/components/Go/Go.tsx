@@ -14,7 +14,7 @@ export default function Go(){
                 ip: res.data.ip,
                 city: res.data.city,
                 region: res.data.region,
-                country: res.data.country,
+                country: res.data.country_name,
                 organization: res.data.org,
                 browser: browser.getBrowserName(),
                 OperatingSystem: `${browser.getOSName()} ${browser.getOSVersion()}`

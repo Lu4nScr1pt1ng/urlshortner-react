@@ -8,7 +8,6 @@ import Login from './pages/auth/Login';
 import PrivateRoutes from './utils/PrivateRoutes';
 import Register from './pages/auth/Register';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ShowLink from './components/Dashboard/ShowLink';
 import Go from './components/Go/Go';
 
@@ -20,19 +19,15 @@ function App() {
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
           <Routes>
-            <Route element={<Go />} path="/go/:urlid" />
+            <Route element={ <Go />} path="/go/:urlid" />
+            <Route element={<><Header /> <Home /></>} path="/" />
+            <Route element={<><Header /> <Login /></>} path="/login" />
+            <Route element={<><Header /> <Register /></>} path="/register" />
+            <Route element={<PrivateRoutes />}>
+              <Route element={<><Header /> <Dashboard /></>} path="/dashboard" />
+              <Route element={<><Header /> <ShowLink /></>} path="/dashboard/:urlid" />
+            </Route>
           </Routes>
-            <Header />
-            <Routes>
-              <Route element={<Home />} path="/" />
-              <Route element={<Login />} path="/login" />
-              <Route element={<Register />} path="/register" />
-              <Route element={<PrivateRoutes />}>
-                <Route element={<Dashboard />} path="/dashboard" />
-                <Route element={<ShowLink />} path="/dashboard/:urlid" />
-              </Route>
-            </Routes>
-          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </AuthProvider>
     </>
