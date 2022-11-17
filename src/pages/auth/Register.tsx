@@ -82,7 +82,7 @@ export default function Register() {
             <input {...register('confirmpassword')} type="password" className="rounded-[6px] border-[1px] py-1 px-2" />
             <p className="text-red-600 text-sm">{errors.confirmpassword?.message}</p>
             {isLoading ? <div className="text-center">Carregando...</div> : ''}
-            <p className="text-red-600 text-sm text-center">{message ? message : ''}</p>
+            <p className="text-sm text-center">{message ? message : ''}</p>
             <button className="bg-accent font-semibold text-white py-2 rounded-[6px]">Criar conta</button>
             <p className="text-center text-subtext text-sm mb-2">
               Já tem uma conta?{' '}

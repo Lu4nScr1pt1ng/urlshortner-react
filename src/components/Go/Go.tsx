@@ -17,7 +17,7 @@ export default function Go(){
                 country: res.data.country,
                 organization: res.data.org,
                 browser: browser.getBrowserName(),
-                OperatingSystem: `${browser.getOSName()} ${browser.getOSVersion}`
+                OperatingSystem: `${browser.getOSName()} ${browser.getOSVersion()}`
             }).then(res => {
                 const url = res.data.redirectlink
                 window.location.replace(url);

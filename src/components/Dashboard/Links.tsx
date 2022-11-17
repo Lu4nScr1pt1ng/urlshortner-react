@@ -22,17 +22,17 @@ export default function Links() {
   const { data, isLoading, isError } = useQuery({ queryKey: ['urls'], queryFn: fetchUrls });
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return <div className='text-center'>Carregando...</div>;
   }
 
   if (isError) {
-    return <div>Ocorreu um erro ao buscar lista de urls</div>;
+    return <div className='text-center'>Ocorreu um erro ao buscar lista de urls</div>;
   }
 
-  console.log(data);
 
   return (
     <div className="mt-8">
+      {data[0] ? "" : <div className='text-center'>Você não tem uma url criada ainda</div> }
       <div className='flex flex-wrap gap-4 mb-4'>
         {data.map((url) => (
           <div key={url.id} className="bg-white border-[1px] p-4 mx-auto border-gray-200 w-[240px] rounded-md flex flex-col justify-between gap-2">
@@ -42,7 +42,7 @@ export default function Links() {
             </div>
             <div className="text-center">
               <h3 className="font-semibold">URL</h3>
-              <p className="text-center">localhost/go/{url.id}</p>
+              <p className="text-center overflow-x-auto ">{ window.location.href.replace('/dashboard', '') + "/go/" + url.id}</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold uppercase">Redireciona para</h3>

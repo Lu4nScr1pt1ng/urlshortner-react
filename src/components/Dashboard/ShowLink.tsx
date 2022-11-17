@@ -1,14 +1,19 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
-import { Navigate, redirect, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import FormatDate from '../../utils/FormDate';
 
 interface AccessI {
   id: string;
   ip: string;
-  linkId: string;
-  creatorOfLinkId: string;
+  city: string;
+  region: string;
+  country: string;
+  organization: string;
+  browser: string;
+  operatingSystem: string;
   accesedAt: string;
 }
 
@@ -31,6 +36,7 @@ export default function ShowLink() {
   if (isError) {
     return <div>Ocorreu um erro ao buscar lista de urls</div>;
   }
+
 
   return (
     <>
@@ -81,19 +87,19 @@ export default function ShowLink() {
                   <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     {access.ip}
                   </th>
-                  <td className="py-4 px-6">algo</td>
-                  <td className="py-4 px-6">algo</td>
-                  <td className="py-4 px-6">algo</td>
-                  <td className="py-4 px-6">algo</td>
-                  <td className="py-4 px-6">algo</td>
-                  <td className="py-4 px-6">algo</td>
-                  <td className="py-4 px-6">algo</td>
+                  <td className="py-4 px-6">{access.city}</td>
+                  <td className="py-4 px-6">{access.region}</td>
+                  <td className="py-4 px-6">{access.country}</td>
+                  <td className="py-4 px-6">{access.organization}</td>
+                  <td className="py-4 px-6">{access.browser}</td>
+                  <td className="py-4 px-6">{access.operatingSystem}</td>
+                  <td className="py-4 px-6">{FormatDate(access.accesedAt)}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         ) : (
-          <div>Não existe accessos aqui</div>
+          <div className='text-center mt-4'>Não existe accessos nesse link ainda</div>
         )}
       </div>
     </>
