@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
+import BackEnd from '../../services/api';
 
 yup.setLocale({
   string: {
@@ -44,12 +45,18 @@ export default function Register() {
   async function onSubmit(data: IFormInputs) {
     setIsLoading(true);
     try {
-        axios.post("https://localhost:7128/v1/user/register", {
+        axios.post( BackEnd + "/v1/user/register", {
             name: data.name,
             email: data.email,
             password: data.password
         }).then(() => {
             navigate("/login");
+        }).catch((e) => {
+            if(e.response.status === 400){
+                setMessage(e.response.data.message)
+            } else {
+                setMessage("Ocorreu um erro ao cadastrar usuario")
+            }
         })
         setIsLoading(false);
     }
@@ -82,7 +89,7 @@ export default function Register() {
             <input {...register('confirmpassword')} type="password" className="rounded-[6px] border-[1px] py-1 px-2" />
             <p className="text-red-600 text-sm">{errors.confirmpassword?.message}</p>
             {isLoading ? <div className="text-center">Carregando...</div> : ''}
-            <p className="text-sm text-center">{message ? message : ''}</p>
+            <p className="text-sm text-center text-red-500">{message ? message : ''}</p>
             <button className="bg-accent font-semibold text-white py-2 rounded-[6px]">Criar conta</button>
             <p className="text-center text-subtext text-sm mb-2">
               Já tem uma conta?{' '}

@@ -31,11 +31,11 @@ export default function ShowLink() {
   const { data, isLoading, isError } = useQuery({ queryKey: ['access'], queryFn: fetchAccess });
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return <div className='text-center p-[80px]'>Carregando...</div>;
   }
 
   if (isError) {
-    return <div>Ocorreu um erro ao buscar lista de urls</div>;
+    return <div className='text-center p-[80px]'>Ocorreu um erro ao buscar lista de urls</div>;
   }
 
 
@@ -45,7 +45,7 @@ export default function ShowLink() {
         <div className="bg-accent text-white font-semibold p-2 border-[1px] border-black">
           <ul className="flex justify-evenly">
             <li className="uppercase">
-              <button onClick={() => navigate('/dashboard')}>VOLTAR PARA O DASHBOARD</button>
+              <button onClick={() => navigate('/dashboard')}>VOLTAR PARA O MENU PRINCIPAL</button>
             </li>
           </ul>
         </div>

@@ -39,19 +39,19 @@ export default function Links() {
           <div key={url.id} className="bg-white border-[1px] p-4 mx-auto border-gray-200 w-[240px] rounded-md flex flex-col justify-between gap-2">
             <div className="text-center">
               <h3 className="font-semibold">ID</h3>
-              <p className="text-center">{url.id}</p>
+              <p className="text-center border-[1px] border-gray-200 p-1 rounded-md">{url.id}</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold">URL</h3>
-              <p className="text-center overflow-x-auto ">{ window.location.href.replace('/dashboard', '') + "/go/" + url.id}</p>
+              <p className="text-center border-[1px] border-gray-200 p-1 rounded-md overflow-x-auto ">{ window.location.href.replace('/dashboard', '') + "/go/" + url.id}</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold uppercase">Redireciona para</h3>
-              <p className="text-center overflow-x-auto">{url.redirectLink}</p>
+              <p className="text-center border-[1px] border-gray-200 p-1 rounded-md overflow-x-auto">{url.redirectLink}</p>
             </div>
             <div className="text-center">
               <h3 className="font-semibold uppercase">Criado em</h3>
-              <p className="text-center">{FormatDate(url.createdAt)}</p>
+              <p className="text-center border-[1px] border-gray-200 p-1 rounded-md">{FormatDate(url.createdAt)}</p>
             </div>
             <div>
               <Link to={`/dashboard/${url.id}`} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">
