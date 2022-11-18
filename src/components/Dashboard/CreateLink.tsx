@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
+import BackEnd from '../../services/api';
 
 yup.setLocale({
   string: {
@@ -39,7 +40,7 @@ export default function CreateLink() {
     try {
       axios
         .post(
-          'https://localhost:7128/short',
+            BackEnd + '/short',
           {
             redirectlink: data.redirectlink,
           },

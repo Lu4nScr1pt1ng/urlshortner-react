@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import Bowser from "bowser";
+import BackEnd from "../../services/api";
 
 export default function Go(){
     const { urlid } = useParams();
@@ -10,7 +11,7 @@ export default function Go(){
 
     useEffect(() => {
         axios.get("https://ipapi.co/json/").then(res => {
-            axios.post(`https://localhost:7128/go/${urlid}`, {
+            axios.post(`${BackEnd}/go/${urlid}`, {
                 ip: res.data.ip,
                 city: res.data.city,
                 region: res.data.region,

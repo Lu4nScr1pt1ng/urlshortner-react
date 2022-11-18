@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import BackEnd from '../../services/api';
 import FormatDate from '../../utils/FormDate';
 
 interface Url {
@@ -16,7 +17,7 @@ export default function Links() {
   const { token } = useAuth();
   const fetchUrls = (): Promise<Url[]> =>
     axios
-      .get('https://localhost:7128/short', { headers: { Authorization: `Bearer ${token}` } })
+      .get( BackEnd + '/short', { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => response.data);
 
   const { data, isLoading, isError } = useQuery({ queryKey: ['urls'], queryFn: fetchUrls });

@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import BackEnd from '../services/api';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -40,9 +41,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const verifyToken = () => {
     if(token){
-        axios.get("https://localhost:7128/v1/user/verify", {headers: { Authorization: `Bearer ${token}` }}).then((res) => {
+        axios.get( BackEnd + "/v1/user/verify", {headers: { Authorization: `Bearer ${token}` }}).then((res) => {
             setUsername(res.data.name);
-            console.log("Token valido!");
         }).catch(() => {
             localStorage.removeItem("user");
             setUsername(null);
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const login = async (email: string, password: string) => {
      await axios
       .post(
-        'https://localhost:7128/v1/user/login',
+         BackEnd + '/v1/user/login',
         {
           email,
           password,

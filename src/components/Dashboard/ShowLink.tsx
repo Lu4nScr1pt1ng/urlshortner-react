@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import BackEnd from '../../services/api';
 import FormatDate from '../../utils/FormDate';
 
 interface AccessI {
@@ -24,7 +25,7 @@ export default function ShowLink() {
 
   const fetchAccess = (): Promise<AccessI[]> =>
     axios
-      .get(`https://localhost:7128/go/e/${urlid}`, { headers: { Authorization: `Bearer ${token}` } })
+      .get(`${BackEnd}/go/e/${urlid}`, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => response.data);
 
   const { data, isLoading, isError } = useQuery({ queryKey: ['access'], queryFn: fetchAccess });

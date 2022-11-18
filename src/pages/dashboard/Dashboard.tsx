@@ -10,8 +10,8 @@ export default function Dashboard(){
         <div className="pt-[80px] container mx-auto">
             <div className="bg-accent text-white font-semibold p-2 border-[1px] border-black">
                 <ul className="flex justify-evenly">
-                <li className="uppercase"><button onClick={() => setDashpage(true)}>URLS</button></li>
-                <li className="uppercase"><button onClick={() => setDashpage(false)}>Criar nova URL</button></li>
+                <li className="uppercase"><button className={dashpage ? "underline underline-offset-4" : ""} onClick={() => setDashpage(true)}>URLS</button></li>
+                <li className="uppercase"><button className={dashpage ? "" : "underline underline-offset-4"}  onClick={() => setDashpage(false)}>Criar nova URL</button></li>
                 </ul>
             </div>
             <div>

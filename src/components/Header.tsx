@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { RiCloseFill, RiBarChartHorizontalLine } from 'react-icons/ri';
 import useAuth from '../hooks/useAuth';
 function Header() {
@@ -19,10 +19,10 @@ function Header() {
     logout();
   }
 
+  const activeClassName = "underline-offset-4 underline"
+
   return (
-    <header
-      className={`${bg ? 'bg-white shadow-lg' : ''} fixed left-0 right-0 z-40 transition-all duration-200 `}
-    >
+    <header className={`${bg ? 'bg-white shadow-lg' : ''} fixed left-0 right-0 z-40 transition-all duration-200 `}>
       <div className="container mx-auto flex justify-between h-[70px] items-center">
         <div className="text-[18px] font-semibold">URL SHORTNER</div>
         <nav>
@@ -36,17 +36,18 @@ function Header() {
                 {username ? (
                   <>
                     <li>
-                      <Link onClick={() => setNavMobile(!navMobile)} to={'/'}>
+                      <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} onClick={() => setNavMobile(!navMobile)} to={'/'}>
                         Home
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link onClick={() => setNavMobile(!navMobile)} to={'/dashboard'}>
+                      <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} onClick={() => setNavMobile(!navMobile)} to={'/dashboard'}>
                         Dashboard
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
                       <Link
+                        className='text-red-500 font-medium'
                         onClick={() => {
                           handleLogout();
                           setNavMobile(!navMobile);
@@ -60,24 +61,24 @@ function Header() {
                 ) : (
                   <>
                     <li>
-                      <Link onClick={() => setNavMobile(!navMobile)} to={'/'}>
+                      <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} onClick={() => setNavMobile(!navMobile)} to={'/'}>
                         Home
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link onClick={() => setNavMobile(!navMobile)} to={'/dashboard'}>
+                      <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} onClick={() => setNavMobile(!navMobile)} to={'/dashboard'}>
                         Dashboard
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link onClick={() => setNavMobile(!navMobile)} to={'/login'}>
+                      <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} onClick={() => setNavMobile(!navMobile)} to={'/login'}>
                         Entrar
-                      </Link>
+                      </NavLink>
                     </li>
                     <li>
-                      <Link onClick={() => setNavMobile(!navMobile)} to={'/register'}>
+                      <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} onClick={() => setNavMobile(!navMobile)} to={'/register'}>
                         Cadastrar
-                      </Link>
+                      </NavLink>
                     </li>
                   </>
                 )}
@@ -93,15 +94,15 @@ function Header() {
           <ul className="hidden md:gap-[45px] md:flex">
             {username ? (
               <>
-                <li>Bem-vindo {username}</li>
+                <li className='text-blue-600'>Bem-vindo {username}</li>
                 <li>
-                  <Link to={'/'}>Home</Link>
+                  <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} to={'/'}>Home</NavLink>
                 </li>
                 <li>
-                  <Link to={'/dashboard'}>Dashboard</Link>
+                  <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} to={'/dashboard'}>Dashboard</NavLink>
                 </li>
                 <li>
-                  <Link onClick={handleLogout} to={'/'}>
+                  <Link className='text-red-500 font-bold' onClick={handleLogout} to={'/'}>
                     Sair
                   </Link>
                 </li>
@@ -109,16 +110,16 @@ function Header() {
             ) : (
               <>
                 <li>
-                  <Link to={'/'}>Home</Link>
+                  <NavLink className={({ isActive }) => isActive ? activeClassName : undefined}  to={'/'}>Home</NavLink>
                 </li>
                 <li>
-                  <Link to={'/dashboard'}>Dashboard</Link>
+                  <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} to={'/dashboard'}>Dashboard</NavLink>
                 </li>
                 <li>
-                  <Link to={'/login'}>Entrar</Link>
+                  <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} to={'/login'}>Entrar</NavLink>
                 </li>
                 <li>
-                  <Link to={'/register'}>Cadastrar</Link>
+                  <NavLink className={({ isActive }) => isActive ? activeClassName : undefined} to={'/register'}>Cadastrar</NavLink>
                 </li>
               </>
             )}
